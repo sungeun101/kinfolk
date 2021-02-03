@@ -1,24 +1,24 @@
 import React from 'react';
-import styled, {css} from 'styled-components/macro' 
-import {Link} from 'react-router-dom'
+import styled, { css } from 'styled-components/macro' 
+import { Link } from 'react-router-dom'
 import { menuData } from '../data/MenuData';
 import { Button } from './Button';
+import { FaBars } from 'react-icons/fa'
 
 const Nav = styled.nav`
     position: fixed;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
-    height: 60px;
+    height: 3.75rem;
     padding: 1rem 2rem;
-    background: green;
-    box-sizing:border-box;
+    z-index:1000;
 `
 const NavLink = css`
     display: flex;
     align-items: center;
     padding: 0 1rem;
-    background: pink;
     color: #fff;
     cursor: pointer;
     text-decoration: none;
@@ -27,13 +27,23 @@ const Logo = styled(Link)`
     ${NavLink}
     font-style: italic;
 `
-const MenuBars = styled.i`
-    
+const MenuBars = styled(FaBars)`
+    display:none;
+
+    @media screen and (max-width: 48rem){
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
 `
 const NavMenu = styled.div`
     display:flex;
     align-items: center;
-    margin-right: -48px;
+    margin-right: -3rem;
+
+    @media screen and (max-width: 48rem){
+        display: none;
+    }
 `
 const NavMenuLinks = styled(Link)`
     ${NavLink}
@@ -41,8 +51,12 @@ const NavMenuLinks = styled(Link)`
 const NavBtn = styled.div`
     display: flex;
     align-items: center;
-    margin-right: 24px;
+    margin-right: 1.5rem;
     background: yellow;
+
+    @media screen and (max-width: 48rem){
+        display: none;
+    }
 `
 
 const Navbar = () => {
