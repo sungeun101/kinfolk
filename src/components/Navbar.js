@@ -12,8 +12,9 @@ const Nav = styled.nav`
     align-items: center;
     width: 100%;
     height: 3.75rem;
-    padding: 1rem 2rem;
-    z-index:1000;
+    padding: 2em;
+    z-index:100;
+    text-transform: uppercase;
 `
 const NavLink = css`
     display: flex;
@@ -25,6 +26,7 @@ const NavLink = css`
 `
 const Logo = styled(Link)`
     ${NavLink}
+    font-size: 1.3rem;
     font-style: italic;
 `
 const MenuBars = styled(FaBars)`
@@ -39,7 +41,7 @@ const MenuBars = styled(FaBars)`
 const NavMenu = styled.div`
     display:flex;
     align-items: center;
-    margin-right: -3rem;
+    font-size:1rem;
 
     @media screen and (max-width: 48rem){
         display: none;
@@ -49,21 +51,18 @@ const NavMenuLinks = styled(Link)`
     ${NavLink}
 `
 const NavBtn = styled.div`
-    display: flex;
-    align-items: center;
-    margin-right: 1.5rem;
-    background: yellow;
+    ${NavLink}
 
     @media screen and (max-width: 48rem){
         display: none;
     }
 `
 
-const Navbar = () => {
+const Navbar = ({toggle}) => {
     return (
         <Nav>
-            <Logo to='/'>Edd</Logo>
-            <MenuBars />
+            <Logo to='/'>kinfolk</Logo>
+            <MenuBars onClick={toggle}/>
             <NavMenu>
                 {menuData.map((item, index) => (
                     <NavMenuLinks to={item.link} key={index}>
@@ -72,7 +71,7 @@ const Navbar = () => {
                 ))}
             </NavMenu>
             <NavBtn>
-                <Button to='/contact' primary>Contact Us</Button>
+                <Button to='/contact' primary='true'>Contact Us</Button>
             </NavBtn>
         </Nav>
     );
