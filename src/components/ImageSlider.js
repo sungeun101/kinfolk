@@ -98,8 +98,7 @@ const arrowBtns = css`
     &:hover{
         background:#cd853f;
         transform:scale(1.05);
-    }
-    
+    }  
 `
 const SliderButtons = styled.div`
    position:absolute;

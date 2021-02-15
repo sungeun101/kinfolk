@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components/macro' 
 import { Link } from 'react-router-dom'
 import { menuData } from '../data/MenuData';
@@ -15,6 +15,8 @@ const Nav = styled.nav`
     padding: 2em;
     z-index:100;
     text-transform: uppercase;
+    background: ${({ navbar }) => (navbar ? 'pink' : 'transparent')};
+    transition: 0.3s ease-in-out;
 `
 const NavLink = css`
     display: flex;
@@ -28,6 +30,7 @@ const Logo = styled(Link)`
     ${NavLink}
     font-size: 1.3rem;
     font-style: italic;
+    font-weight:600;
 `
 const MenuBars = styled(FaBars)`
     display:none;
@@ -59,8 +62,19 @@ const NavBtn = styled.div`
 `
 
 const Navbar = ({toggle}) => {
+    const [navbar, setNavbar] = useState(false)
+
+    const changeBackground = () => {
+        if(window.scrollY >= 80) {
+            setNavbar(true)
+        } else {
+            setNavbar(false)
+        }
+    }
+    window.addEventListener('scroll', changeBackground)
+
     return (
-        <Nav>
+        <Nav navbar={navbar}>
             <Logo to='/'>kinfolk</Logo>
             <MenuBars onClick={toggle}/>
             <NavMenu>
